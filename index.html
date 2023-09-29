@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Postcard demo</title>
+        <meta name="description" content="Demo of new postcard shape">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="postcard.css">
+    </head>
+    <body>
+      <h1>"Shut up JP"</h1>
+
+      <div class="postcard right-hand portrait" style="--postcard: url('seattle.webp'); --aspect-ratio: 1376 / 1931"></div>
+      <div class="postcard book" style="--postcard: url('sri-lanka.webp'); --aspect-ratio: 2286 / 1647;"></div>
+      <div class="postcard left-hand portrait" style="--postcard: url('morocco.webp'); --aspect-ratio: 1575 / 2224"></div>
+      <div class="postcard right-hand portrait" style="--postcard: url('seattle.webp'); --aspect-ratio: 1376 / 1931"></div>
+      <div class="postcard book" style="--postcard: url('sri-lanka.webp'); --aspect-ratio: 2286 / 1647;"></div>
+      <div class="postcard left-hand portrait" style="--postcard: url('morocco.webp'); --aspect-ratio: 1575 / 2224"></div>
+      <div class="postcard right-hand portrait" style="--postcard: url('seattle.webp'); --aspect-ratio: 1376 / 1931"></div>
+      <div class="postcard book" style="--postcard: url('sri-lanka.webp'); --aspect-ratio: 2286 / 1647;"></div>
+      <div class="postcard left-hand portrait" style="--postcard: url('morocco.webp'); --aspect-ratio: 1575 / 2224"></div>
+
+      <style>
+        h1 {
+          height: 45vh;
+          margin: 2.5vh;
+          aspect-ratio:1/1;
+        }
+        .postcard {
+          height: 45vh;
+          margin: 2.5vh;
+          aspect-ratio:1/1;
+          --flip: calc((var(--scroll) - var(--yPos) + (var(--viewportY) / 2))/var(--viewportY) *360deg);
+        }
+      </style>
+
+      <script>
+        // let deg = 0;
+        // setInterval(() => {
+        //   deg = (deg + 0.5);
+        //   document.documentElement.style.setProperty('--flip', deg + 'deg');
+        // }, 10);
+
+        const debounce = (fn) => {
+          let frame;
+          return (...params) => {
+            if (frame) { 
+              cancelAnimationFrame(frame);
+            }
+            frame = requestAnimationFrame(() => {
+              fn(...params);
+            });
+          } 
+        };
+
+        const storeScroll = () => {
+          document.documentElement.style.setProperty('--scroll', window.scrollY);
+        }
+        document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+        storeScroll();
+
+        const setYPos = () => {
+          document.documentElement.style.setProperty('--viewportY', Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0));
+          Array.from(document.getElementsByClassName('postcard')).forEach((pc) => {
+            pc.style.setProperty('--yPos',
+              window.scrollY + pc.getBoundingClientRect().top
+            );
+          })
+        }
+        window.addEventListener('resize', debounce(setYPos));
+        setYPos();
+        
+      </script>
+    </body>
+</html>
