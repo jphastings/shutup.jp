@@ -1,0 +1,72 @@
+:root {
+  --front: #222;
+  --muted: #000;
+  --back: #eee;
+
+  @media (prefers-color-scheme: dark) {
+    --front: #ddd;
+    --muted: #999;
+    --back: #222;
+  }
+
+  --row-height: 50;
+}
+
+a {
+  color: var(--muted);
+}
+
+a:hover {
+  color: var(--front);
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-padding: calc(50vh - var(--row-height) * 1vh);
+
+  background-color: var(--back);
+  color: var(--front);
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 2rem;
+  padding: 0;
+}
+section, figure {
+  height: calc(1vh*var(--row-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  /* scroll-snap-align: start; */
+  padding: 0 10vh;
+}
+figcaption {
+  height: 45%;
+  width: 40%;
+  margin: 5%;
+}
+section.explain {
+  height: 50vh;
+  flex-direction: column;
+}
+p {
+  text-align:justify;
+}
+.postcard {
+  height: 95%;
+  aspect-ratio:1/1;
+  --flip: calc(
+    (
+      (var(--scroll) - var(--yPos)) * (var(--row-height) / 50)/var(--viewportY)
+      /* - (50 - (var(--row-height)) / 50) */
+      + 0.75
+    ) * 360deg);
+}
+
+/* 500 - 750 / 1000 = 0.25 */

@@ -45,11 +45,13 @@
 
 .postcard::after {
   background: no-repeat top/100%;
+  mask: var(--postcard) top/100%;
   -webkit-mask: var(--postcard) top/100%;
 }
 
 .postcard::before {
   background: no-repeat bottom/100%;
+  mask: var(--postcard) bottom/100%;
   -webkit-mask: var(--postcard) bottom/100%;
 }
 
@@ -107,15 +109,15 @@
 }
 
 .postcard.left-hand::after {
-  transform: perspective(800px) rotate3d(1,-1,0,var(--flip));
-  background-image: linear-gradient(to top left,
+  transform: perspective(800px) rotate3d(-1,1,0,var(--flip));
+  background-image: linear-gradient(to bottom right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
 }
 .postcard.left-hand::before {
-  transform: perspective(800px) rotate3d(1,-1,0,calc(var(--flip) + 180deg)) rotate(90deg);
-  background-image: linear-gradient(to bottom left,
+  transform: perspective(800px) rotate3d(-1,1,0,calc(var(--flip) + 180deg)) rotate(90deg);
+  background-image: linear-gradient(to top right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
