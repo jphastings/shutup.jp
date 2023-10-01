@@ -1,7 +1,7 @@
 :root {
   --front: #222;
   --muted: #000;
-  --back: #eee;
+  --back: #f7f7f7;
 
   @media (prefers-color-scheme: dark) {
     --front: #ddd;
@@ -9,7 +9,8 @@
     --back: #222;
   }
 
-  --row-height: 50;
+  --row-padding: 8;
+  --row-height: calc(50 - var(--row-padding));
 }
 
 a {
@@ -25,7 +26,7 @@ html,body {
   padding: 0;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   scroll-snap-type: y mandatory;
-  scroll-padding: calc(50vh - var(--row-height) * 1vh);
+  scroll-padding: calc(var(--row-padding) * 1vh);
 
   background-color: var(--back);
   color: var(--front);
@@ -37,13 +38,17 @@ h1 {
   margin: 2rem;
   padding: 0;
 }
+p {
+  min-width: 350px;
+  width: 45vw;
+}
 section, figure {
-  height: calc(1vh*var(--row-height));
+  height: calc(var(--row-height) * 1vh);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  /* scroll-snap-align: start; */
+  scroll-snap-align: start;
   padding: 0 10vh;
 }
 figcaption {
@@ -59,14 +64,12 @@ p {
   text-align:justify;
 }
 .postcard {
-  height: 95%;
+  height: 90%;
   aspect-ratio:1/1;
   --flip: calc(
     (
-      (var(--scroll) - var(--yPos)) * (var(--row-height) / 50)/var(--viewportY)
-      /* - (50 - (var(--row-height)) / 50) */
+      (var(--scroll) - var(--yPos)) * 50/(var(--viewportY) * var(--row-height))
+      + (var(--row-padding) / (2 * var(--row-height)))
       + 0.75
     ) * 360deg);
 }
-
-/* 500 - 750 / 1000 = 0.25 */
