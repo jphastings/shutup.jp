@@ -2,6 +2,9 @@
 
 version: '3'
 
+dotenv:
+  - .env
+
 tasks:
   build:
     cmds:  
@@ -12,3 +15,6 @@ tasks:
   dev:
     cmds:
       - task serve & find {*.tmpl,static,*.go} -type f | entr -cc task build
+  postcards:
+    cmds:
+      - for y in "${ORIGINAL_POSTCARDS}"/*.yaml; do postcards compile --outdir ./postcards --web --override "$y"; done

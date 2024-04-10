@@ -31,7 +31,7 @@ func main() {
 	var pcs []Postcard
 	toCopy := []string{"static/postcard.css", "static/shutup.css"}
 
-	for _, file := range files[:3] {
+	for _, file := range files {
 		var pc Postcard
 		f, err := os.Open(file)
 		check(err)
