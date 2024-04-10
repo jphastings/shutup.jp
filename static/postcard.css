@@ -34,6 +34,7 @@
   align-items: center;
   justify-content: center;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform-style: preserve-3d;
   background-blend-mode: multiply;
 }
@@ -46,13 +47,11 @@
 .postcard::after {
   background: no-repeat top/100%;
   mask: var(--postcard) top/100%;
-  -webkit-mask: var(--postcard) top/100%;
 }
 
 .postcard::before {
   background: no-repeat bottom/100%;
   mask: var(--postcard) bottom/100%;
-  -webkit-mask: var(--postcard) bottom/100%;
 }
 
 .postcard * {
@@ -121,4 +120,11 @@
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
+}
+
+/* Hacks */
+
+/* Webkit can't handle masks without stuttering, so disable them; postcards will have a white border */
+_::-webkit-full-page-media, _:future, :root .postcard::before, :root .postcard::after {
+  mask: none;
 }

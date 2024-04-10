@@ -1,6 +1,6 @@
 :root {
   --front: #222;
-  --muted: #000;
+  --muted: #555;
   --back: #f7f7f7;
 
   @media (prefers-color-scheme: dark) {
@@ -52,10 +52,17 @@ section, figure {
   padding: 0 10vh;
 }
 figcaption {
-  height: 45%;
+  position: relative;
+  height: 50%;
   width: 40%;
   margin: 5%;
+  background-image: var(--map);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  white-space: pre;
 }
+
 section.explain {
   height: 50vh;
   flex-direction: column;
@@ -72,4 +79,15 @@ p {
       + (var(--row-padding) / (2 * var(--row-height)))
       + 0.75
     ) * 360deg);
+}
+
+svg polygon {
+  fill:#eee;
+  stroke:black;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+svg * {
+  transform-box: fill-box;
 }

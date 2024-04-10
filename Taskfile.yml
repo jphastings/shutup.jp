@@ -1,0 +1,14 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  build:
+    cmds:  
+      - go run .
+  serve:
+    cmds:
+      - serve -n dist/
+  dev:
+    cmds:
+      - task serve & find {*.tmpl,static,*.go} -type f | entr -cc task build
