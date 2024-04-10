@@ -6,6 +6,7 @@ Things I want to do with this site
 
 - [ ] Safari rotates the back side of the postcard the opposite direction to _every other browser_. Which is extremely annoying. I need to figure out a workaround.
 - [ ] Fix locale flags for Windows users
+- [ ] In portrait mode, clicking on a postcard jumps to the previous postcard?
 
 ### Ideas
 
