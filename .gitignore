@@ -1,2 +1,4 @@
 /dist/
 .env
+# Temporary, while I'm working
+/postcards/

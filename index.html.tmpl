@@ -21,7 +21,8 @@
       {{ range . }}
       <figure>
         <div class="postcard {{ .Flip }} {{ if gt .FrontDimensions.PxHeight .FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .FrontDimensions.PxWidth }} / {{ .FrontDimensions.PxHeight }}">
-          <img src="{{ .Name }}.webp" alt="{{ .Front.Description }}">
+          <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Front.Description }}" width="500px">
+          <div></div>
         </div>
         <!--<figcaption style="--map: url(seattle.svg)">-->
         <figcaption>
@@ -34,34 +35,12 @@
       <section class="explain">How fun is this??</section>
 
       <script>
-        const debounce = (fn) => {
-          let frame;
-          return (...params) => {
-            if (frame) { 
-              cancelAnimationFrame(frame);
-            }
-            frame = requestAnimationFrame(() => {
-              fn(...params);
-            });
-          } 
-        };
-
-        const storeScroll = () => {
-          document.documentElement.style.setProperty('--scroll', window.scrollY);
-        }
-        document.addEventListener('scroll', storeScroll, { passive: true });
-        storeScroll();
-
-        const setYPos = () => {
-          document.documentElement.style.setProperty('--viewportY', Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0));
-          Array.from(document.getElementsByClassName('postcard')).forEach((pc) => {
-            pc.style.setProperty('--yPos',
-              window.scrollY + pc.getBoundingClientRect().top + pc.getBoundingClientRect().height / 2
-            );
-          })
-        }
-        window.addEventListener('resize', setYPos);
-        setYPos();
+        window.addEventListener('DOMContentLoaded', () => {
+          for (const pc of document.getElementsByClassName('postcard')) {
+            pc.classList.add('clickable');
+            pc.addEventListener('click', () => pc.classList.toggle('flipped'));
+          }
+        });
       </script>
     </body>
 </html>

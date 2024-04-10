@@ -6,6 +6,7 @@
   flex-direction: row;
   align-items: center;
 
+  --p: 1000px;
   --v1: calc(min(1, max(0,
     cos(var(--flip)),
     cos(var(--flip) + 180deg),
@@ -54,7 +55,7 @@
   mask: var(--postcard) bottom/100%;
 }
 
-.postcard * {
+.postcard img {
   display:none;
 }
 
@@ -63,14 +64,14 @@
 }
 
 .postcard.book::after {
-  transform: perspective(800px) rotateY(var(--flip));
+  transform: perspective(var(--p)) rotateY(var(--flip));
   background-image: linear-gradient(to right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
 }
 .postcard.book::before {
-  transform: perspective(800px) rotateY(calc(var(--flip) + 180deg));
+  transform: perspective(var(--p)) rotateY(calc(var(--flip) + 180deg));
   background-image: linear-gradient(to right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
@@ -78,14 +79,14 @@
 }
 
 .postcard.calendar::after {
-  transform: perspective(800px) rotateX(var(--flip));
+  transform: perspective(var(--p)) rotateX(var(--flip));
   background-image: linear-gradient(to top,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
 }
 .postcard.calendar::before {
-  transform: perspective(800px) rotateX(calc(var(--flip) + 180deg));
+  transform: perspective(var(--p)) rotateX(calc(var(--flip) + 180deg));
   background-image: linear-gradient(to top,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
@@ -93,14 +94,14 @@
 }
 
 .postcard.right-hand::after {
-  transform: perspective(800px) rotate3d(1,1,0,var(--flip));
+  transform: perspective(var(--p)) rotate3d(1,1,0,var(--flip));
   background-image: linear-gradient(to top right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
 }
 .postcard.right-hand::before {
-  transform: perspective(800px) rotate3d(1,1,0,calc(var(--flip) + 180deg)) rotate(-90deg);
+  transform: perspective(var(--p)) rotate3d(1,1,0,calc(var(--flip) + 180deg)) rotate(-90deg);
   background-image: linear-gradient(to bottom right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
@@ -108,23 +109,16 @@
 }
 
 .postcard.left-hand::after {
-  transform: perspective(800px) rotate3d(-1,1,0,var(--flip));
+  transform: perspective(var(--p)) rotate3d(-1,1,0,var(--flip));
   background-image: linear-gradient(to bottom right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
 }
 .postcard.left-hand::before {
-  transform: perspective(800px) rotate3d(-1,1,0,calc(var(--flip) + 180deg)) rotate(90deg);
+  transform: perspective(var(--p)) rotate3d(-1,1,0,calc(var(--flip) + 180deg)) rotate(90deg);
   background-image: linear-gradient(to top right,
       rgb(var(--v1), var(--v1), var(--v1)),
       rgb(var(--v2), var(--v2), var(--v2))
     ), var(--postcard);
-}
-
-/* Hacks */
-
-/* Webkit can't handle masks without stuttering, so disable them; postcards will have a white border */
-_::-webkit-full-page-media, _:future, :root .postcard::before, :root .postcard::after {
-  mask: none;
 }
