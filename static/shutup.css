@@ -177,6 +177,7 @@ input:checked ~ figcaption .title {
 [lang="gv-IM"]::after { content: '🇮🇲' }
 [lang="hr-HR"]::after { content: '🇭🇷' }
 [lang="id-MY"]::after { content: '🇲🇾' }
+[lang="is-IS"]::after { content: '🇮🇸' }
 [lang="it-IT"]::after { content: '🇮🇹' }
 [lang="ka-GE"]::after { content: '🇬🇪' }
 [lang="km-KH"]::after { content: '🇰🇭' }
