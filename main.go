@@ -34,14 +34,17 @@ func main() {
 		pcs = append(pcs, pc)
 		toCopy = append(toCopy, "postcards/"+pc.Name+".webp")
 	}
+	sort.Sort(BySentOn(pcs))
 
 	os.Mkdir("dist/", 0755)
 
 	indexF, err := os.OpenFile(path.Join(outDir, "index.html"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	check(err)
-
-	sort.Sort(BySentOn(pcs))
 	check(indexTmpl.Execute(indexF, pcs))
+
+	feedF, err := os.OpenFile(path.Join(outDir, "feed.xml"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
+	check(err)
+	check(feedTmpl.Execute(feedF, pcs))
 
 	for _, tc := range toCopy {
 		src, err := os.Open(tc)

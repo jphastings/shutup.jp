@@ -11,11 +11,12 @@
         <link rel="canonical" href="https://shutup.jp">
         <link rel="stylesheet" href="postcard.css">
         <link rel="stylesheet" href="shutup.css">
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Shut up JP">
     </head>
     <body>
       <section class="explain">
         <p>One day, after months of silence, my friend <a href="https://www.instagram.com/claire.durrant88/">Claire</a> sent me a text message of only 3 words:</p>
-        <h1>Shut up, JP</h1>
+        <h1>Shut up JP</h1>
         <p>Knowing my <a href="https://www.byjp.me/posts/thoughts-on-postcards/" target="_blank">love of postcards</a>, she started sending me this invaluable advice by mail too – from every country she visited, and in every language the friendly (and presumably deeply confused) locals help her write in.</p>
         <p>It's just shy of a decade later and, apparently, I've <em>still</em> not got the message.</p>
         <cite><a target="_blank" href="https://www.byjp.me">JP</a></cite>
@@ -23,8 +24,8 @@
 
       {{ range . }}
       <figure>
-        <input type="checkbox" id="flip-{{.Name}}">
-        <label for="flip-{{.Name}}">
+        <input type="checkbox" id="{{.Name}}">
+        <label for="{{.Name}}">
           <div class="postcard {{ .Flip }} {{ if gt .FrontDimensions.PxHeight .FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .FrontDimensions.PxWidth }} / {{ .FrontDimensions.PxHeight }}">
             <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Front.Description }}" width="500px">
             <div></div>
@@ -36,7 +37,7 @@
           <div class="transcription">{{- .Back.Transcription | safeHTML -}}</div>
         </figcaption>
       </figure>
-      {{ end }}
+      {{ end }}   
 
       <section class="explain">Shut up Claire.</section>
     </body>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Shut up JP</title>
+    <link>https://shutpup.jp/</link>
+    <description>A collection of postcards sent to me by my friend, Claire, inviting me to 'shut up' from many places and in many languages over many years.</description>
+    <language>en-GB</language>
+    <managingEditor>hello@shutup.jp (JP Hastings-Spital)</managingEditor>
+    <webMaster>hello@shutup.jp (JP Hastings-Spital)</webMaster>
+    <copyright>CC BY-NC-SA 4.0</copyright>
+    <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+    {{ range . }}
+    <item>
+      <title>{{ with .Location }}{{ .Name }}{{ end }}{{ with .SentOn }} ({{ .Format "January 2, 2006" }}){{ end }}</title>
+      <link>/#{{ .Name }}</link>
+      <pubDate>{{ with .SentOn }}{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}{{ end }}</pubDate>
+      <guid>{{ .Name }}</guid>
+      <content:encoded>
+        <p>Another delightfully curt postcard I received from Claire on {{ with .SentOn }}{{ .Format "January 1, 2006" }}{{ end }}. It reads:</p>
+        {{- .Back.Transcription | safeHTML -}}
+      </content:encoded>
+      <enclosure url="/{{.Name}}.webp" type="image/webp"/>
+    </item>
+    {{ end }}
+  </channel>
+</rss>
