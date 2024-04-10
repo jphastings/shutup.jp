@@ -10,6 +10,7 @@ Things I want to do with this site
 ### Ideas
 
 - [ ] Include a map, blocking off the parts of the world that I've received a postcard from. Voronoi colouring for countries with more than one?
+- [ ] Add forward/back buttons (use these as spacers to vertically centre the portrait version?)
 
 ### Done ✔
 
