@@ -20,10 +20,14 @@
 
       {{ range . }}
       <figure>
-        <div class="postcard {{ .Flip }} {{ if gt .FrontDimensions.PxHeight .FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .FrontDimensions.PxWidth }} / {{ .FrontDimensions.PxHeight }}">
-          <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Front.Description }}" width="500px">
-          <div></div>
-        </div>
+        <input type="checkbox" id="flip-{{.Name}}">
+        <label for="flip-{{.Name}}">
+          <div class="postcard {{ .Flip }} {{ if gt .FrontDimensions.PxHeight .FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .FrontDimensions.PxWidth }} / {{ .FrontDimensions.PxHeight }}">
+            <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Front.Description }}" width="500px">
+            <div></div>
+          </div>
+        </label>
+        
         <!--<figcaption style="--map: url(seattle.svg)">-->
         <figcaption>
           {{- .Back.Transcription | safeHTML -}}
@@ -33,14 +37,5 @@
       {{ end }}
 
       <section class="explain">How fun is this??</section>
-
-      <script>
-        window.addEventListener('DOMContentLoaded', () => {
-          for (const pc of document.getElementsByClassName('postcard')) {
-            pc.classList.add('clickable');
-            pc.addEventListener('click', () => pc.classList.toggle('flipped'));
-          }
-        });
-      </script>
     </body>
 </html>

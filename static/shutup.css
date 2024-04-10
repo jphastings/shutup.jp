@@ -79,11 +79,18 @@ p {
   aspect-ratio:1/1;
   --flip: 0deg;
 }
-.postcard.clickable {
+
+label {
+  display:block;
+  width: 100%;
   cursor: pointer;
 }
 
-.postcard.clickable.flipped,.postcard:not(.clickable):hover {
+input {
+  display:none;
+}
+
+input:checked ~ label .postcard  {
   --flip: 180deg;
 }
 
