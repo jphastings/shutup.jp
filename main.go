@@ -1,22 +1,12 @@
 package main
 
 import (
-	_ "embed"
 	"encoding/json"
-	"html/template"
 	"io"
 	"os"
 	"path/filepath"
 	"sort"
 )
-
-//go:embed index.html.tmpl
-var indexStr string
-var indexTmpl = template.Must(template.New("index").Funcs(template.FuncMap{
-	"safeHTML": func(str string) template.HTML {
-		return template.HTML(str)
-	},
-}).Parse(indexStr))
 
 func check(e error) {
 	if e != nil {

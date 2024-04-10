@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/big"
 	"time"
 )
@@ -41,32 +40,27 @@ const (
 	FlipRightHand Flip = "right-hand"
 )
 
-type Date string
-
-func (d Date) Valid() bool {
-	_, _, _, err := d.Components()
-	return err == nil
+type Date struct {
+	time.Time
 }
 
-func (d Date) Components() (year int, month int, day int, err error) {
-	_, err = fmt.Sscanf(string(d), "%d-%d-%d", &year, &month, &day)
-	return year, month, day, err
-}
-
-func (d Date) Time() (time.Time, error) {
-	year, month, day, err := d.Components()
-	if err != nil {
-		return time.Time{}, err
+func (d *Date) UnmarshalJSON(b []byte) (err error) {
+	str := string(b)
+	if str == "null" {
+		d.Time = time.Time{}
+		return nil
 	}
-	return time.Date(year, time.Month(month), day, 23, 0, 0, 0, time.UTC), nil
+
+	// Specify your custom layout here
+	d.Time, err = time.Parse(`"2006-01-02"`, str)
+	return err
 }
 
-func (d Date) Format(layout string) string {
-	t, err := d.Time()
-	if err != nil {
-		return ""
+func (d Date) MarshalJSON() ([]byte, error) {
+	if d.Time.IsZero() {
+		return []byte("null"), nil
 	}
-	return t.Format(layout)
+	return []byte(d.Time.Format(`"2006-01-02"`)), nil
 }
 
 type Size struct {
@@ -81,4 +75,4 @@ type BySentOn []Postcard
 // Implement the sort.Interface - Len, Less, and Swap methods
 func (a BySentOn) Len() int           { return len(a) }
 func (a BySentOn) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a BySentOn) Less(i, j int) bool { return a[i].SentOn < a[j].SentOn }
+func (a BySentOn) Less(i, j int) bool { return a[i].SentOn.Unix() > a[j].SentOn.Unix() }

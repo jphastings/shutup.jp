@@ -36,7 +36,7 @@ h1 {
   padding: 0;
 }
 section, figure {
-  height: 100vh;
+  height: calc(100vh - 2em);
   padding: 1em;
   margin: 0;
   display: flex;
@@ -46,6 +46,49 @@ section, figure {
   flex-direction: row;
 }
 
+figcaption {
+  min-width: 25vw;
+  position: relative;
+  text-align: right;
+  margin: 1em;
+  position: relative;
+  height: 50vh;
+  text-wrap: balance;
+}
+
+figcaption > * {
+  width: 100%;
+  transition: opacity 500ms ease-in-out 0ms;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+figcaption .title {
+  transition-delay: 500ms;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.title time {
+  font-style: italic;
+  font-size: 0.65em;
+  font-weight: normal;
+}
+
+.title * {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+figcaption .transcription {
+  opacity: 0;
+  white-space: pre;
+  text-wrap: balance;
+  font-size: 1.2em;
+}
+
 @media (orientation: portrait)  {
   figure {
     flex-direction: column;
@@ -53,31 +96,40 @@ section, figure {
 
   figcaption {
     min-height: 25vh;
+    text-align: center;
+    width: 50vw;
+    margin: 2em 0;
   }
-}
 
-figcaption {
-  min-width: 25vw;
-  position: relative;
-  white-space: pre;
+  figcaption > * {
+    top: 0;
+    transform: none;
+  }
 }
 
 section.explain {
   display: grid;
 	place-content: center;
-  flex-direction: column;
   padding-inline: calc(max((100vw - 500px)/2, 2em));
 }
 
 p {
   text-align:justify;
 }
+cite {
+  text-align: right;
+}
+cite::before {
+  content: '–';
+  margin-right: 0.25em;
+}
 
 .postcard {
-  height: 90%;
-  max-width: 90%;
+  max-width: 90vw;
+  max-height: 75vh;
   aspect-ratio:1/1;
   --flip: 0deg;
+  margin-inline: auto;
 }
 
 label {
@@ -94,17 +146,48 @@ input:checked ~ label .postcard  {
   --flip: 180deg;
 }
 
+input:checked ~ figcaption .transcription {
+  opacity: 1;
+  transition-delay: 500ms;
+}
+
+input:checked ~ figcaption .title {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
 .postcard::before,.postcard::after {
   transition: transform 1s ease-in-out;
 }
 
-svg polygon {
-  fill:#eee;
-  stroke:black;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-svg * {
-  transform-box: fill-box;
-}
+[lang]::after { margin-left: 0.5em }
+[lang="ar-MA"]::after { content: '🇲🇦' }
+[lang="cy-GB"]::after { content: '🏴󠁧󠁢󠁷󠁬󠁳󠁿' }
+[lang="de-DE"]::after { content: '🇩🇪' }
+[lang="el-GR"]::after { content: '🇬🇷' }
+[lang="en-CA"]::after { content: '🇨🇦' }
+[lang="en-GB"]::after { content: '🇬🇧' }
+[lang="en-SG"]::after { content: '🇸🇬/🇬🇧' }
+[lang="en-US"]::after { content: '🇺🇸' }
+[lang="es-ES"]::after { content: '🇪🇸' }
+[lang="es-GT"]::after { content: '🇬🇹' }
+[lang="fr-FR"]::after { content: '🇫🇷' }
+[lang="fr-IM"]::after { content: '🇮🇲/🇫🇷' }
+[lang="gd-GB"]::after { content: '🏴󠁧󠁢󠁳󠁣󠁴󠁿' }
+[lang="gv-IM"]::after { content: '🇮🇲' }
+[lang="hr-HR"]::after { content: '🇭🇷' }
+[lang="id-MY"]::after { content: '🇲🇾' }
+[lang="it-IT"]::after { content: '🇮🇹' }
+[lang="ka-GE"]::after { content: '🇬🇪' }
+[lang="km-KH"]::after { content: '🇰🇭' }
+[lang="ko-KR"]::after { content: '🇰🇷' }
+[lang="mi-NZ"]::after { content: '🇳🇿' }
+[lang="ms-SG"]::after { content: '🇸🇬/🇲🇾' }
+[lang="pt-PT"]::after { content: '🇵🇹' }
+[lang="se-SE"]::after { content: '🇸🇪' }
+[lang="ta-LK"]::after { content: '🇱🇰' }
+[lang="ta-SG"]::after { content: '🇸🇬/🇮🇳' }
+[lang="th-TH"]::after { content: '🇹🇭' }
+[lang="vi-VN"]::after { content: '🇻🇳' }
+[lang="zh-CN"]::after { content: '🇨🇳' }
+[lang="zh-SG"]::after { content: '🇸🇬/🇨🇳' }
