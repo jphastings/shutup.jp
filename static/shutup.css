@@ -2,11 +2,13 @@
   --text-color: #222;
   --mute-color: #777;
   --back-color: #f7f7f7;
+  --bg: url('bg-light.png');
 
   @media (prefers-color-scheme: dark) {
     --text-color: #ddd;
     --mute-color: #777;
     --back-color: #222;
+    --bg: url('bg-dark.png');
   }
 }
 
@@ -21,12 +23,18 @@ a:hover {
 html,body {
   margin: 0;
   padding: 0;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   scroll-snap-type: y mandatory;
   scroll-padding: 0;
+}
 
+body {
   background-color: var(--back-color);
   color: var(--text-color);
+  background-image: var(--bg);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position-y: calc(-0.17px * var(--scroll));
 }
 
 h1 {
