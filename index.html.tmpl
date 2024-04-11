@@ -28,7 +28,7 @@
         <label for="{{.Name}}">
           <div class="postcard {{ .Flip }} {{ if gt .FrontDimensions.PxHeight .FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .FrontDimensions.PxWidth }} / {{ .FrontDimensions.PxHeight }}">
             <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Front.Description }}" width="500px">
-            <div></div>
+            <div class="shadow"></div>
           </div>
         </label>
         

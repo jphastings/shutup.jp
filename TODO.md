@@ -12,9 +12,9 @@ Things I want to do with this site
 
 - [ ] Include a map, blocking off the parts of the world that I've received a postcard from. Voronoi colouring for countries with more than one?
 - [ ] Add forward/back buttons (use these as spacers to vertically centre the portrait version?)
-- [ ] Add shadows to the postcards
 
 ### Done ✔
 
 - [x] Add RSS feed for postcards
 - [x] Add a very subtle background, scrolling at a slower speed than the window, for parallax effect.
+- [x] Add shadows to the postcards
