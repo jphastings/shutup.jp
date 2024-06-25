@@ -19,7 +19,7 @@
       <description>{{- .Back.Transcription | plainify -}}</description>
       <content:encoded>
         <![CDATA[
-          <img src="https://shutup.jp/{{.Name}}.webp" />
+          <img src="https://shutup.jp/{{.Name}}.webp" alt="Both sides of a postcard. On the front: {{ .Front.Description | safeHTML }} On the back, the handwritten text “{{ .Back.Transcription | plainify }}”" />
           <pre>{{- .Back.Transcription | safeHTML -}}</pre>
         ]]>
       </content:encoded>
