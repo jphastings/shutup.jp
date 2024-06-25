@@ -7,14 +7,18 @@ dotenv:
 
 tasks:
   build:
+    desc: Builds the site from constituent parts
     cmds:  
       - go run .
   serve:
+    desc: Serves the site locally (with no auto-updating)
     cmds:
       - serve -n dist/
   dev:
+    desc: Allows for local development, rerunning `task build` when changes are spotted
     cmds:
       - task serve & find {*.tmpl,static,*.go} -type f | entr -cc task build
   postcards:
+    desc: Pulls postcards from `ORIGINAL_POSTCARDS` (as specified in `.env`)
     cmds:
       - for y in "${ORIGINAL_POSTCARDS}"/*.yaml; do postcards compile --outdir ./postcards --web --override "$y"; done

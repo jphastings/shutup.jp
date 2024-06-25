@@ -25,23 +25,30 @@ a:hover {
   color: var(--text-color);
 }
 
-html,body {
+html {
   margin: 0;
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
+  max-width: 100%;
   scroll-snap-type: y mandatory;
   scroll-padding: 0;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  width: 100vw;
+  /* -webkit-overflow-scrolling: touch; */
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
   background-color: var(--back-color);
   color: var(--text-color);
   background-image: var(--bg);
   background-repeat: repeat;
   background-attachment: fixed;
+  overflow-x: hidden;
+  /* -webkit-overflow-scrolling: touch; */
 }
 
 h1 {
