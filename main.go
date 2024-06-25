@@ -22,7 +22,13 @@ func main() {
 	check(err)
 
 	var pcs []Postcard
-	toCopy := []string{"static/postcard.css", "static/shutup.css", "static/bg-light.png", "static/bg-dark.png"}
+	toCopy := []string{
+		"static/postcard.css",
+		"static/shutup.css",
+		"static/bg-light.png",
+		"static/bg-dark.png",
+		"static/socials.jpg",
+	}
 
 	for _, file := range files {
 		var pc Postcard
