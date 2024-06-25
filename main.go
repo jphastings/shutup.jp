@@ -27,7 +27,7 @@ func main() {
 		"static/shutup.css",
 		"static/bg-light.png",
 		"static/bg-dark.png",
-		"static/socials.jpg",
+		"static/og-image.jpg",
 	}
 
 	for _, file := range files {
