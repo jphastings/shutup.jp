@@ -3,8 +3,11 @@ package main
 import (
 	_ "embed"
 	ht "html/template"
+	"strings"
 	tt "text/template"
 	"time"
+
+	"github.com/gohugoio/hugo/tpl"
 )
 
 func now() time.Time {
@@ -19,10 +22,15 @@ func safeHTML(str string) ht.HTML {
 	return ht.HTML(str)
 }
 
+func plainify(str string) string {
+	return strings.TrimSpace(tpl.StripHTML(str))
+}
+
 var funcs = ht.FuncMap{
 	"safeHTML": safeHTML,
 	"lastPC":   lastPC,
 	"now":      now,
+	"plainify": plainify,
 }
 
 //go:embed index.html.tmpl
