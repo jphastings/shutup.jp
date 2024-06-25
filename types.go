@@ -14,6 +14,7 @@ type Postcard struct {
 	Back            Side     `json:"back,omitempty"`
 	FrontDimensions Size     `json:"frontSize" yaml:"front_size,omitempty"`
 	Context         Context  `json:"context,omitempty"`
+	ImgSize         int64    `json:"-"`
 }
 
 type Location struct {

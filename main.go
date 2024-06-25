@@ -31,8 +31,14 @@ func main() {
 		check(json.NewDecoder(f).Decode(&pc))
 
 		pc.Name = filepath.Base(file)[:len(filepath.Base(file))-5]
+
+		imgName := "postcards/" + pc.Name + ".webp"
+		fs, err := os.Stat(imgName)
+		check(err)
+		pc.ImgSize = fs.Size()
+
 		pcs = append(pcs, pc)
-		toCopy = append(toCopy, "postcards/"+pc.Name+".webp")
+		toCopy = append(toCopy, imgName)
 	}
 	sort.Sort(BySentOn(pcs))
 

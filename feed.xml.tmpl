@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shut up JP</title>
     <link>https://shutup.jp/</link>
@@ -9,19 +9,22 @@
     <webMaster>hello@shutup.jp (JP Hastings-Spital)</webMaster>
     <copyright>CC BY-NC-SA 4.0</copyright>
     <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+    <atom:link href="https://shutup.jp/feed.xml" rel="self" type="application/rss+xml" />
     {{ range . }}
     <item>
       <title>{{ with .Location }}{{ .Name }}{{ end }}{{ with .SentOn }} ({{ .Format "January 2, 2006" }}){{ end }}</title>
       <link>https://shutup.jp/#{{ .Name }}</link>
       <pubDate>{{ with .SentOn }}{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}{{ end }}</pubDate>
-      <guid>{{ .Name }}</guid>
-      <description>{{- .Back.Transcription | plainify -}}</description>
+      <guid isPermaLink="false">{{ .Name }}</guid>
+      <description>{{- .Back.Transcription | safeHTML -}}</description>
       <content:encoded>
-        <img src="https://shutup.jp/{{.Name}}.webp" />
-        <p>Another delightfully curt postcard I received from Claire on {{ with .SentOn }}{{ .Format "January 1, 2006" }}{{ end }}. It reads:</p>
-        <pre>{{- .Back.Transcription | safeHTML -}}</pre>
+        <![CDATA[
+          <img src="https://shutup.jp/{{.Name}}.webp" />
+          <p>Another delightfully curt postcard I received from Claire on {{ with .SentOn }}{{ .Format "January 1, 2006" }}{{ end }}. It reads:</p>
+          <pre>{{- .Back.Transcription | safeHTML -}}</pre>
+        ]]>
       </content:encoded>
-      <enclosure url="https://shutup.jp/{{.Name}}.webp" type="image/webp"/>
+      <enclosure url="https://shutup.jp/{{.Name}}.webp" type="image/webp" length="{{ .ImgSize }}"/>
     </item>
     {{ end }}
   </channel>
