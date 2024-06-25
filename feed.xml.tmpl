@@ -20,7 +20,6 @@
       <content:encoded>
         <![CDATA[
           <img src="https://shutup.jp/{{.Name}}.webp" />
-          <p>Another delightfully curt postcard I received from Claire on {{ with .SentOn }}{{ .Format "January 1, 2006" }}{{ end }}. It reads:</p>
           <pre>{{- .Back.Transcription | safeHTML -}}</pre>
         ]]>
       </content:encoded>
