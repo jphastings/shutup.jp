@@ -1,12 +1,14 @@
 package main
 
 import (
-	"encoding/json"
 	"io"
 	"os"
 	"path"
 	"path/filepath"
 	"sort"
+
+	"github.com/jphastings/dotpostcard/formats/metadata"
+	"github.com/jphastings/dotpostcard/types"
 )
 
 const outDir = "dist/"
@@ -18,10 +20,10 @@ func check(e error) {
 }
 
 func main() {
-	files, err := filepath.Glob("postcards/*.json")
+	files, err := filepath.Glob("postcards/*-meta.json")
 	check(err)
 
-	var pcs []Postcard
+	var pcs []types.Postcard
 	toCopy := []string{
 		"static/postcard.css",
 		"static/shutup.css",
@@ -31,24 +33,27 @@ func main() {
 	}
 
 	for _, file := range files {
-		var pc Postcard
 		f, err := os.Open(file)
 		check(err)
-		check(json.NewDecoder(f).Decode(&pc))
+		defer f.Close()
 
-		pc.Name = filepath.Base(file)[:len(filepath.Base(file))-5]
-
-		imgName := "postcards/" + pc.Name + ".webp"
-		fs, err := os.Stat(imgName)
+		b, err := metadata.BundleFromFile(f, path.Dir(file))
 		check(err)
-		pc.ImgSize = fs.Size()
+
+		pc, err := b.Decode(nil)
+		check(err)
+
+		imgName := "postcards/" + pc.Name + ".postcard"
+		// fs, err := os.Stat(imgName)
+		// check(err)
+		// pc.ImgSize = fs.Size()
 
 		pcs = append(pcs, pc)
 		toCopy = append(toCopy, imgName)
 	}
-	sort.Sort(BySentOn(pcs))
+	sort.Sort(types.BySentOn(pcs))
 
-	os.Mkdir("dist/", 0755)
+	check(os.MkdirAll("dist/", 0755))
 
 	indexF, err := os.OpenFile(path.Join(outDir, "index.html"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	check(err)

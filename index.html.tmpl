@@ -27,15 +27,15 @@
       <figure>
         <input type="checkbox" id="{{.Name}}">
         <label for="{{.Name}}">
-          <div class="postcard {{ .Flip }} {{ if gt .FrontDimensions.PxHeight .FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .FrontDimensions.PxWidth }} / {{ .FrontDimensions.PxHeight }}">
-            <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Front.Description }}" width="500px">
+          <div class="postcard {{ .Meta.Flip }} {{ if gt .Meta.Physical.FrontDimensions.PxHeight .Meta.Physical.FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .Meta.Physical.FrontDimensions.PxWidth }} / {{ .Meta.Physical.FrontDimensions.PxHeight }}">
+            <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Meta | altText }}" width="500px">
             <div class="shadow"></div>
           </div>
         </label>
         
         <figcaption>
-          <div class="title">{{ with .Location }}<span>{{ .Name }}</span>{{ end }}{{ with .SentOn }} <time datetime="{{ . }}">{{ .Format "January 2, 2006" }}</time>{{ end }}</div>
-          <div class="transcription">{{- .Back.Transcription | safeHTML -}}</div>
+          <div class="title">{{ with .Meta.Location }}<span>{{ .Name }}</span>{{ end }}{{ with .Meta.SentOn }} <time datetime="{{ . }}">{{ .Format "January 2, 2006" }}</time>{{ end }}</div>
+          <div class="transcription">{{- .Meta.Back.Transcription.Text -}}</div>
         </figcaption>
       </figure>
       {{ end }}   

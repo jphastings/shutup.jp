@@ -8,13 +8,15 @@ import (
 	"time"
 
 	"github.com/gohugoio/hugo/tpl"
+	"github.com/jphastings/dotpostcard/formats"
+	"github.com/jphastings/dotpostcard/types"
 )
 
 func now() time.Time {
 	return time.Now()
 }
 
-func lastPC(pcs []Postcard) Postcard {
+func lastPC(pcs []types.Postcard) types.Postcard {
 	return pcs[len(pcs)-1]
 }
 
@@ -26,11 +28,17 @@ func plainify(str string) string {
 	return strings.TrimSpace(tpl.StripHTML(str))
 }
 
+func altText(meta types.Metadata) string {
+	alt, _ := formats.AltText(meta, "en")
+	return alt
+}
+
 var funcs = ht.FuncMap{
 	"safeHTML": safeHTML,
 	"lastPC":   lastPC,
 	"now":      now,
 	"plainify": plainify,
+	"altText":  altText,
 }
 
 //go:embed index.html.tmpl

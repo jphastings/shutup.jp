@@ -12,18 +12,18 @@
     <atom:link href="https://shutup.jp/feed.xml" rel="self" type="application/rss+xml" />
     {{ range . }}
     <item>
-      <title>{{ with .Location }}{{ .Name }}{{ end }}{{ with .SentOn }} ({{ .Format "January 2, 2006" }}){{ end }}</title>
+      <title>{{ with .Meta.Location }}{{ .Name }}{{ end }}{{ with .Meta.SentOn }} ({{ .Format "January 2, 2006" }}){{ end }}</title>
       <link>https://shutup.jp/#{{ .Name }}</link>
-      <pubDate>{{ with .SentOn }}{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}{{ end }}</pubDate>
+      <pubDate>{{ with .Meta.SentOn }}{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}{{ end }}</pubDate>
       <guid isPermaLink="false">{{ .Name }}</guid>
-      <description>{{- .Back.Transcription | plainify -}}</description>
+      <description>{{- .Meta.Back.Transcription.Text -}}</description>
       <content:encoded>
         <![CDATA[
-          <img src="https://shutup.jp/{{.Name}}.webp" alt="Both sides of a postcard. On the front: {{ .Front.Description | safeHTML }} On the back, the handwritten text “{{ .Back.Transcription | plainify }}”" />
-          <pre>{{- .Back.Transcription | safeHTML -}}</pre>
+          <img src="https://shutup.jp/{{.Name}}.webp" alt="{{ .Meta | altText }}”" />
+          <p>{{- .Meta.Back.Transcription.Text -}}</p>
         ]]>
       </content:encoded>
-      <enclosure url="https://shutup.jp/{{.Name}}.webp" type="image/webp" length="{{ .ImgSize }}"/>
+      <enclosure url="https://shutup.jp/{{.Name}}.webp" type="image/webp" length="0"/>
     </item>
     {{ end }}
   </channel>
