@@ -16,10 +16,10 @@
       <link>https://shutup.jp/#{{ .Name }}</link>
       <pubDate>{{ with .Meta.SentOn }}{{ .Format "Mon, 02 Jan 2006 15:04:05 -0700" }}{{ end }}</pubDate>
       <guid isPermaLink="false">{{ .Name }}</guid>
-      <description>{{- .Meta.Back.Transcription.Text -}}</description>
+      <description>{{- .Meta.Back.Transcription.Text | htmlEscape -}}</description>
       <content:encoded>
         <![CDATA[
-          <img src="https://shutup.jp/{{.Name}}.webp" alt="{{ .Meta | altText }}”" />
+          <img src="https://shutup.jp/{{.Name}}.webp" alt="{{ .Meta | altText | htmlEscape }}”" />
           <p>{{- .Meta.Back.Transcription.Text -}}</p>
         ]]>
       </content:encoded>

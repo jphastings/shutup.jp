@@ -27,8 +27,8 @@
       <figure>
         <input type="checkbox" id="{{.Name}}">
         <label for="{{.Name}}">
-          <div class="postcard {{ .Meta.Flip }} {{ if gt .Meta.Physical.FrontDimensions.PxHeight .Meta.Physical.FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.webp'); --aspect-ratio: {{ .Meta.Physical.FrontDimensions.PxWidth }} / {{ .Meta.Physical.FrontDimensions.PxHeight }}">
-            <img src="{{ .Name }}.webp" loading="lazy" alt="{{ .Meta | altText }}" width="500px">
+          <div class="postcard {{ .Meta.Flip }} {{ if gt .Meta.Physical.FrontDimensions.PxHeight .Meta.Physical.FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.postcard.webp'); --aspect-ratio: {{ .Meta.Physical.FrontDimensions.PxWidth }} / {{ .Meta.Physical.FrontDimensions.PxHeight }}">
+            <img src="{{ .Name }}.postcard.webp" loading="lazy" alt="{{ .Meta | altText }}" width="500px">
             <div class="shadow"></div>
           </div>
         </label>

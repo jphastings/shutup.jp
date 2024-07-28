@@ -4,19 +4,19 @@ go 1.21.6
 
 require (
 	github.com/gohugoio/hugo v0.127.0
-	github.com/jphastings/dotpostcard v0.0.0-00010101000000-000000000000
+	github.com/jphastings/dotpostcard v0.0.0-20240727232734-9c5ceed0775e
 )
-
-replace github.com/jphastings/dotpostcard => ../postcards
 
 require (
 	git.sr.ht/~sbinet/cmpimg v0.1.0 // indirect
 	git.sr.ht/~sbinet/gg v0.5.0 // indirect
+	github.com/armon/go-radix v1.0.1-0.20221118154546-54df44f2176c // indirect
 	github.com/bep/clocks v0.5.0 // indirect
 	github.com/bep/godartsass v1.2.0 // indirect
 	github.com/bep/godartsass/v2 v2.0.0 // indirect
 	github.com/bep/golibsass v1.1.1 // indirect
 	github.com/bep/logg v0.4.0 // indirect
+	github.com/bep/overlayfs v0.9.2 // indirect
 	github.com/chai2010/webp v1.1.1 // indirect
 	github.com/clbanning/mxj/v2 v2.7.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
@@ -52,6 +52,8 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
 	github.com/spf13/cast v1.6.0 // indirect
+	github.com/spf13/cobra v1.8.1 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/sunshineplan/tiff v0.0.0-20220128141034-29b9d69bd906 // indirect
 	github.com/tdewolff/parse/v2 v2.7.13 // indirect

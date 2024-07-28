@@ -7,11 +7,13 @@ Things I want to do with this site
 - [ ] Safari rotates the back side of the postcard the opposite direction to _every other browser_. Which is extremely annoying. I need to figure out a workaround.
 - [ ] Fix locale flags for Windows users
 - [ ] In roughly square mode (portrait side), clicking on a postcard jumps to the previous postcard?
+- [ ] Reintroduce locale flags, now I'm using the new format
 
 ### Ideas
 
 - [ ] Include a map, blocking off the parts of the world that I've received a postcard from. Voronoi colouring for countries with more than one?
 - [ ] Add forward/back buttons (use these as spacers to vertically centre the portrait version?)
+- [ ] Swap over to using XMP metadata (once decoding is supported by the library)
 
 ### Done ✔
 

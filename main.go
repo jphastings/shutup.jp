@@ -43,7 +43,7 @@ func main() {
 		pc, err := b.Decode(nil)
 		check(err)
 
-		imgName := "postcards/" + pc.Name + ".postcard"
+		imgName := "postcards/" + pc.Name + ".postcard.webp"
 		// fs, err := os.Stat(imgName)
 		// check(err)
 		// pc.ImgSize = fs.Size()

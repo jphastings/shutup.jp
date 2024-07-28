@@ -20,8 +20,8 @@ func lastPC(pcs []types.Postcard) types.Postcard {
 	return pcs[len(pcs)-1]
 }
 
-func safeHTML(str string) ht.HTML {
-	return ht.HTML(str)
+func htmlEscape(str string) string {
+	return tt.HTMLEscapeString(str)
 }
 
 func plainify(str string) string {
@@ -34,11 +34,11 @@ func altText(meta types.Metadata) string {
 }
 
 var funcs = ht.FuncMap{
-	"safeHTML": safeHTML,
-	"lastPC":   lastPC,
-	"now":      now,
-	"plainify": plainify,
-	"altText":  altText,
+	"htmlEscape": htmlEscape,
+	"lastPC":     lastPC,
+	"now":        now,
+	"plainify":   plainify,
+	"altText":    altText,
 }
 
 //go:embed index.html.tmpl

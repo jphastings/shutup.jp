@@ -21,4 +21,5 @@ tasks:
   postcards:
     desc: Pulls postcards from `ORIGINAL_POSTCARDS` (as specified in `.env`)
     cmds:
-      - for y in "${ORIGINAL_POSTCARDS}"/*.yaml; do postcards compile --outdir ./postcards --web --override "$y"; done
+      - postcards -f web,json --out-dir ./postcards "${ORIGINAL_POSTCARDS}"/*
+
