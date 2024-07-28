@@ -10,7 +10,8 @@
     <copyright>CC BY-NC-SA 4.0</copyright>
     <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
     <atom:link href="https://shutup.jp/feed.xml" rel="self" type="application/rss+xml" />
-    {{ range . }}
+    {{- $sizes := .Sizes -}}
+    {{ range .Postcards }}
     <item>
       <title>{{ with .Meta.Location }}{{ .Name }}{{ end }}{{ with .Meta.SentOn }} ({{ .Format "January 2, 2006" }}){{ end }}</title>
       <link>https://shutup.jp/#{{ .Name }}</link>
@@ -19,11 +20,13 @@
       <description>{{- .Meta.Back.Transcription.Text | htmlEscape -}}</description>
       <content:encoded>
         <![CDATA[
-          <img src="https://shutup.jp/{{.Name}}.webp" alt="{{ .Meta | altText | htmlEscape }}”" />
+          <img src="https://shutup.jp/{{.Name}}-front.webp" alt="{{ .Meta | altText | htmlEscape }}”" />
+          <img src="https://shutup.jp/{{.Name}}-back.webp" alt="{{ .Meta | altText | htmlEscape }}”" />
           <p>{{- .Meta.Back.Transcription.Text -}}</p>
         ]]>
       </content:encoded>
-      <enclosure url="https://shutup.jp/{{.Name}}.webp" type="image/webp" length="0"/>
+      <enclosure url="https://shutup.jp/{{.Name}}-front.webp" type="image/webp" length="{{ index $sizes (printf "%s-front.webp" .Name) }}"/>
+      <enclosure url="https://shutup.jp/{{.Name}}-back.webp" type="image/webp" length="{{ index $sizes (printf "%s-back.webp" .Name) }}"/>
     </item>
     {{ end }}
   </channel>

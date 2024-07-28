@@ -1,13 +1,16 @@
 package main
 
 import (
+	"errors"
 	"io"
 	"os"
 	"path"
 	"path/filepath"
 	"sort"
 
-	"github.com/jphastings/dotpostcard/formats/metadata"
+	"github.com/jphastings/dotpostcard/formats"
+	"github.com/jphastings/dotpostcard/formats/component"
+	"github.com/jphastings/dotpostcard/formats/web"
 	"github.com/jphastings/dotpostcard/types"
 )
 
@@ -19,11 +22,18 @@ func check(e error) {
 	}
 }
 
+type tmplVars struct {
+	Postcards []types.Postcard
+	Sizes     map[string]int64
+}
+
 func main() {
-	files, err := filepath.Glob("postcards/*-meta.json")
+	files, err := filepath.Glob("postcards/*.postcard.webp")
 	check(err)
 
-	var pcs []types.Postcard
+	vars := tmplVars{
+		Sizes: make(map[string]int64),
+	}
 	toCopy := []string{
 		"static/postcard.css",
 		"static/shutup.css",
@@ -31,37 +41,41 @@ func main() {
 		"static/bg-dark.png",
 		"static/og-image.jpg",
 	}
+	check(os.MkdirAll(outDir, 0755))
 
 	for _, file := range files {
 		f, err := os.Open(file)
 		check(err)
 		defer f.Close()
 
-		b, err := metadata.BundleFromFile(f, path.Dir(file))
-		check(err)
-
+		b := web.BundleFromReader(f, file)
 		pc, err := b.Decode(nil)
 		check(err)
 
-		imgName := "postcards/" + pc.Name + ".postcard.webp"
-		// fs, err := os.Stat(imgName)
-		// check(err)
-		// pc.ImgSize = fs.Size()
+		pcImgName := "postcards/" + pc.Name + ".postcard.webp"
+		vars.Postcards = append(vars.Postcards, pc)
+		toCopy = append(toCopy, pcImgName)
 
-		pcs = append(pcs, pc)
-		toCopy = append(toCopy, imgName)
+		// Make front & back covers
+		for _, fw := range component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800}) {
+			fname, err := fw.WriteFile(outDir, false)
+			if !errors.Is(err, os.ErrExist) {
+				check(err)
+			}
+			fs, err := os.Stat(path.Join(outDir, fname))
+			check(err)
+			vars.Sizes[fname] = fs.Size()
+		}
 	}
-	sort.Sort(types.BySentOn(pcs))
-
-	check(os.MkdirAll("dist/", 0755))
+	sort.Sort(types.BySentOn(vars.Postcards))
 
 	indexF, err := os.OpenFile(path.Join(outDir, "index.html"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	check(err)
-	check(indexTmpl.Execute(indexF, pcs))
+	check(indexTmpl.Execute(indexF, vars))
 
 	feedF, err := os.OpenFile(path.Join(outDir, "feed.xml"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	check(err)
-	check(feedTmpl.Execute(feedF, pcs))
+	check(feedTmpl.Execute(feedF, vars))
 
 	for _, tc := range toCopy {
 		src, err := os.Open(tc)

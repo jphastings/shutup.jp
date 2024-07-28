@@ -23,7 +23,7 @@
         <cite><a target="_blank" href="https://www.byjp.me">JP</a></cite>
       </section>
 
-      {{ range . }}
+      {{ range .Postcards }}
       <figure>
         <input type="checkbox" id="{{.Name}}">
         <label for="{{.Name}}">
@@ -35,7 +35,7 @@
         
         <figcaption>
           <div class="title">{{ with .Meta.Location }}<span>{{ .Name }}</span>{{ end }}{{ with .Meta.SentOn }} <time datetime="{{ . }}">{{ .Format "January 2, 2006" }}</time>{{ end }}</div>
-          <div class="transcription">{{- .Meta.Back.Transcription.Text -}}</div>
+          <div class="transcription">{{- .Meta.Back.Transcription | annotate -}}</div>
         </figcaption>
       </figure>
       {{ end }}   

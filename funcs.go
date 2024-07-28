@@ -2,7 +2,9 @@ package main
 
 import (
 	_ "embed"
+	"fmt"
 	ht "html/template"
+	"sort"
 	"strings"
 	tt "text/template"
 	"time"
@@ -33,12 +35,22 @@ func altText(meta types.Metadata) string {
 	return alt
 }
 
+func annotate(at types.AnnotatedText) ht.HTML {
+	sort.Sort(types.SortEndsLast(at.Annotations))
+
+	// TODO: Handle annotations
+	fmt.Println(at.Annotations)
+
+	return ht.HTML(htmlEscape(at.Text))
+}
+
 var funcs = ht.FuncMap{
 	"htmlEscape": htmlEscape,
 	"lastPC":     lastPC,
 	"now":        now,
 	"plainify":   plainify,
 	"altText":    altText,
+	"annotate":   annotate,
 }
 
 //go:embed index.html.tmpl
