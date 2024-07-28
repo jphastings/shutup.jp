@@ -205,6 +205,7 @@ input:checked ~ figcaption .title {
 [lang="id-MY"]::after { content: '🇲🇾' }
 [lang="is-IS"]::after { content: '🇮🇸' }
 [lang="it-IT"]::after { content: '🇮🇹' }
+[lang="ja-JA"]::after { content: '🇯🇵' }
 [lang="ka-GE"]::after { content: '🇬🇪' }
 [lang="km-KH"]::after { content: '🇰🇭' }
 [lang="ko-KR"]::after { content: '🇰🇷' }
