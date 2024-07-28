@@ -4,10 +4,8 @@ go 1.21.6
 
 require (
 	github.com/gohugoio/hugo v0.129.0
-	github.com/jphastings/dotpostcard v0.0.0-20240728075147-6ea690890bb1
+	github.com/jphastings/dotpostcard v0.0.0-20240728143331-6094d721d0b4
 )
-
-replace github.com/jphastings/dotpostcard => ../postcards
 
 require (
 	git.sr.ht/~sbinet/gg v0.5.0 // indirect

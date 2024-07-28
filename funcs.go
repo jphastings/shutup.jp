@@ -2,9 +2,7 @@ package main
 
 import (
 	_ "embed"
-	"fmt"
 	ht "html/template"
-	"sort"
 	"strings"
 	tt "text/template"
 	"time"
@@ -36,12 +34,7 @@ func altText(meta types.Metadata) string {
 }
 
 func annotate(at types.AnnotatedText) ht.HTML {
-	sort.Sort(types.SortEndsLast(at.Annotations))
-
-	// TODO: Handle annotations
-	fmt.Println(at.Annotations)
-
-	return ht.HTML(htmlEscape(at.Text))
+	return ht.HTML(at.HTML())
 }
 
 var funcs = ht.FuncMap{

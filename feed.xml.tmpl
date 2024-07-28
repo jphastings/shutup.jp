@@ -20,8 +20,8 @@
       <description>{{- .Meta.Back.Transcription.Text | htmlEscape -}}</description>
       <content:encoded>
         <![CDATA[
-          <img src="https://shutup.jp/{{.Name}}-front.webp" alt="{{ .Meta | altText | htmlEscape }}”" />
-          <img src="https://shutup.jp/{{.Name}}-back.webp" alt="{{ .Meta | altText | htmlEscape }}”" />
+          <img src="https://shutup.jp/{{.Name}}-front.webp" alt="{{ .Meta.Front.Description | htmlEscape }}”" />
+          <img src="https://shutup.jp/{{.Name}}-back.webp" alt="{{ .Meta.Back.Description | htmlEscape }}”" />
           <p>{{- .Meta.Back.Transcription.Text -}}</p>
         ]]>
       </content:encoded>
