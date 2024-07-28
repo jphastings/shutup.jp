@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"os"
 	"path"
@@ -43,6 +44,7 @@ func main() {
 	}
 	check(os.MkdirAll(outDir, 0755))
 
+	fmt.Println("Finding postcards & extracting front/back images")
 	for _, file := range files {
 		f, err := os.Open(file)
 		check(err)
@@ -69,15 +71,19 @@ func main() {
 	}
 	sort.Sort(types.BySentOn(vars.Postcards))
 
+	fmt.Println("Creating index.html")
 	indexF, err := os.OpenFile(path.Join(outDir, "index.html"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	check(err)
 	check(indexTmpl.Execute(indexF, vars))
 
+	fmt.Println("Creating feed.xml")
 	feedF, err := os.OpenFile(path.Join(outDir, "feed.xml"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
 	check(err)
 	check(feedTmpl.Execute(feedF, vars))
 
+	fmt.Printf("Copying files for distribution:\n")
 	for _, tc := range toCopy {
+		fmt.Printf("  %s\n", tc)
 		src, err := os.Open(tc)
 		check(err)
 
