@@ -8,6 +8,8 @@ dotenv:
 tasks:
   build:
     desc: Builds the site from constituent parts
+    env:
+      CGO_ENABLED: 1
     cmds:  
       - go run .
   serve:
