@@ -15,7 +15,7 @@ tasks:
   serve:
     desc: Serves the site locally (with no auto-updating)
     cmds:
-      - serve -n dist/
+      - serve -port 8081 dist/
   dev:
     desc: Allows for local development, rerunning `task build` when changes are spotted
     cmds:
