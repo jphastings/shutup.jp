@@ -51,7 +51,7 @@ func main() {
 		defer f.Close()
 
 		b := web.BundleFromReader(f, file)
-		pc, err := b.Decode(nil)
+		pc, err := b.Decode(formats.DecodeOptions{})
 		check(err)
 
 		pcImgName := "postcards/" + pc.Name + ".postcard.webp"
@@ -59,7 +59,10 @@ func main() {
 		toCopy = append(toCopy, pcImgName)
 
 		// Make front & back covers
-		for _, fw := range component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800}) {
+		fws, err := component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800})
+		check(err)
+
+		for _, fw := range fws {
 			fname, err := fw.WriteFile(outDir, false)
 			if !errors.Is(err, os.ErrExist) {
 				check(err)

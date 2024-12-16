@@ -9,7 +9,7 @@ tasks:
   build:
     desc: Builds the site from constituent parts
     env:
-      CGO_ENABLED: 1
+      CGO_ENABLED: 0
     cmds:  
       - go run .
   serve:
