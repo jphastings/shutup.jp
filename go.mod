@@ -6,20 +6,18 @@ toolchain go1.23.4
 
 require (
 	github.com/gohugoio/hugo v0.139.5
-	github.com/jphastings/dotpostcard v0.0.0-20241216211844-544c03e318fb
+	github.com/jphastings/dotpostcard v0.0.0-20241216230620-db384cffc98a
 )
 
 require (
 	git.sr.ht/~jackmordaunt/go-libwebp v1.8.0 // indirect
 	git.sr.ht/~sbinet/gg v0.6.0 // indirect
 	github.com/bep/clocks v0.5.0 // indirect
-	github.com/bep/godartsass v1.2.0 // indirect
 	github.com/bep/godartsass/v2 v2.3.2 // indirect
 	github.com/bep/golibsass v1.2.0 // indirect
 	github.com/bep/logg v0.4.0 // indirect
 	github.com/campoy/embedmd v1.0.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/chai2010/webp v1.1.1 // indirect
 	github.com/clbanning/mxj/v2 v2.7.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/dotpostcard/postcards-go v0.1.0 // indirect
@@ -37,7 +35,6 @@ require (
 	github.com/ebitengine/purego v0.8.1 // indirect
 	github.com/ernyoke/imger v1.0.0 // indirect
 	github.com/fatih/color v1.18.0 // indirect
-	github.com/frankban/quicktest v1.14.6 // indirect
 	github.com/gen2brain/jpegli v0.3.3 // indirect
 	github.com/go-errors/errors v1.5.1 // indirect
 	github.com/go-xmlfmt/xmlfmt v1.1.3 // indirect
@@ -47,14 +44,10 @@ require (
 	github.com/gohugoio/localescompressed v1.0.1 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/golang/geo v0.0.0-20230421003525-6adc56603217 // indirect
-	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/hhrutter/lzw v1.0.0 // indirect
-	github.com/kr/pretty v0.3.1 // indirect
-	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mitchellh/hashstructure v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.1-0.20231216201459-8508981c8b6c // indirect
 	github.com/ncruces/go-strftime v0.1.9 // indirect
 	github.com/niklasfasching/go-org v1.7.0 // indirect
@@ -63,7 +56,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/rogpeppe/go-internal v1.13.1 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
 	github.com/spf13/cast v1.7.0 // indirect
 	github.com/sunshineplan/tiff v0.0.0-20220128141034-29b9d69bd906 // indirect
