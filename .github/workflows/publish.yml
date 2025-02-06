@@ -1,0 +1,38 @@
+name: Deploy Golang Web App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.6'
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v2
+
+      - name: Build site
+        run: go run .
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: site
+          path: ./dist

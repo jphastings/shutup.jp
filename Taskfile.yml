@@ -24,4 +24,3 @@ tasks:
     desc: Pulls postcards from `ORIGINAL_POSTCARDS` (as specified in `.env`)
     cmds:
       - postcards -f web --remove-border --out-dir ./postcards "${ORIGINAL_POSTCARDS}"/*
-

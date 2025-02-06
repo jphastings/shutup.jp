@@ -23,6 +23,7 @@
           <img src="https://shutup.jp/{{.Name}}-front.webp" alt="{{ .Meta.Front.Description | htmlEscape }}”" />
           <img src="https://shutup.jp/{{.Name}}-back.webp" alt="{{ .Meta.Back.Description | htmlEscape }}”" />
           <p>{{- .Meta.Back.Transcription.Text -}}</p>
+          {{- with .Meta.Context }}<p>({{ .Description }})</p>{{ end }}
         ]]>
       </content:encoded>
       <enclosure url="https://shutup.jp/{{.Name}}-front.webp" type="image/webp" length="{{ index $sizes (printf "%s-front.webp" .Name) }}"/>
