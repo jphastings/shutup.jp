@@ -24,7 +24,7 @@
       </section>
 
       {{ range .Postcards }}
-      <figure>
+      <figure id="{{.Name}}">
         <input type="checkbox" id="postcard-{{.Name}}">
         <label for="postcard-{{.Name}}">
           <div class="postcard flip-{{ .Meta.Flip }} {{ if gt .Meta.Physical.FrontDimensions.PxHeight .Meta.Physical.FrontDimensions.PxWidth }}portrait{{ else }}landscape{{ end }}" style="--postcard: url('{{ .Name }}.postcard.webp'); --aspect-ratio: {{ .Meta.Physical.FrontDimensions.PxWidth }} / {{ .Meta.Physical.FrontDimensions.PxHeight }}">
