@@ -1,19 +1,19 @@
 module github.com/jphastings/shutup.jp/build
 
-go 1.22.6
+go 1.23.0
 
 toolchain go1.23.4
 
 require (
-	github.com/gohugoio/hugo v0.142.0
-	github.com/jphastings/dotpostcard v0.0.0-20250125125249-e34b6cd67a64
+	github.com/gohugoio/hugo v0.145.0
+	github.com/jphastings/dotpostcard v0.0.0-20250220191017-fca64355f7e8
 )
 
 require (
 	git.sr.ht/~jackmordaunt/go-libwebp v1.8.0 // indirect
 	git.sr.ht/~sbinet/gg v0.6.0 // indirect
 	github.com/bep/clocks v0.5.0 // indirect
-	github.com/bep/godartsass/v2 v2.3.2 // indirect
+	github.com/bep/godartsass/v2 v2.4.0 // indirect
 	github.com/bep/golibsass v1.2.0 // indirect
 	github.com/bep/logg v0.4.0 // indirect
 	github.com/campoy/embedmd v1.0.0 // indirect
@@ -35,11 +35,11 @@ require (
 	github.com/ebitengine/purego v0.8.2 // indirect
 	github.com/ernyoke/imger v1.0.0 // indirect
 	github.com/fatih/color v1.18.0 // indirect
-	github.com/gen2brain/jpegli v0.3.3 // indirect
+	github.com/gen2brain/jpegli v0.3.4 // indirect
 	github.com/go-errors/errors v1.5.1 // indirect
 	github.com/go-xmlfmt/xmlfmt v1.1.3 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
-	github.com/gohugoio/hashstructure v0.3.0 // indirect
+	github.com/gohugoio/hashstructure v0.5.0 // indirect
 	github.com/gohugoio/locales v0.14.0 // indirect
 	github.com/gohugoio/localescompressed v1.0.1 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
@@ -61,17 +61,17 @@ require (
 	github.com/sunshineplan/tiff v0.0.0-20220128141034-29b9d69bd906 // indirect
 	github.com/tdewolff/parse/v2 v2.7.20 // indirect
 	github.com/tdewolff/test v1.0.11-0.20240106005702-7de5f7df4739 // indirect
-	github.com/tetratelabs/wazero v1.8.2 // indirect
+	github.com/tetratelabs/wazero v1.9.0 // indirect
 	github.com/trimmer-io/go-xmp v1.0.0 // indirect
-	golang.org/x/exp v0.0.0-20250128182459-e0ece0dbea4c // indirect
-	golang.org/x/image v0.23.0 // indirect
-	golang.org/x/net v0.34.0 // indirect
-	golang.org/x/sys v0.29.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
-	google.golang.org/protobuf v1.36.4 // indirect
+	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
+	golang.org/x/image v0.25.0 // indirect
+	golang.org/x/net v0.37.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
+	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	modernc.org/libc v1.61.10 // indirect
+	modernc.org/libc v1.61.13 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.8.2 // indirect
 )
