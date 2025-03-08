@@ -13,6 +13,7 @@ import (
 	"github.com/jphastings/dotpostcard/formats/component"
 	"github.com/jphastings/dotpostcard/formats/web"
 	"github.com/jphastings/dotpostcard/types"
+	"github.com/jphastings/shutup.jp/build/mapping"
 )
 
 const outDir = "dist/"
@@ -26,6 +27,7 @@ func check(e error) {
 type tmplVars struct {
 	Postcards []types.Postcard
 	Sizes     map[string]int64
+	Countries mapping.Countries
 }
 
 func main() {
@@ -33,7 +35,8 @@ func main() {
 	check(err)
 
 	vars := tmplVars{
-		Sizes: make(map[string]int64),
+		Sizes:     make(map[string]int64),
+		Countries: make(mapping.Countries),
 	}
 	toCopy := []string{
 		"static/postcard.css",
@@ -57,6 +60,7 @@ func main() {
 		pcImgName := "postcards/" + pc.Name + ".postcard.webp"
 		vars.Postcards = append(vars.Postcards, pc)
 		toCopy = append(toCopy, pcImgName)
+		vars.Countries.Add(pc.Meta.Location)
 
 		// Make front & back covers
 		fws, err := component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800})

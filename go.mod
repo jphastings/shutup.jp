@@ -5,8 +5,9 @@ go 1.23.0
 toolchain go1.23.4
 
 require (
+	github.com/biter777/countries v1.7.5
 	github.com/gohugoio/hugo v0.145.0
-	github.com/jphastings/dotpostcard v0.0.0-20250220191017-fca64355f7e8
+	github.com/jphastings/dotpostcard v0.13.2
 )
 
 require (

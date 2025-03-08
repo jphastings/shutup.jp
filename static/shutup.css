@@ -186,6 +186,37 @@ input:checked ~ figcaption .title {
   transition: transform 1s ease-in-out;
 }
 
+#worldmap {
+  width: 85%;
+  --collected: rgb(24, 227, 85);
+
+  g {
+    path {
+      stroke: #777;
+      stroke-width: 1px;
+      fill: currentColor;
+      fill-opacity: 10%;
+
+    }
+
+    &:hover path {
+      fill-opacity: 50%;
+    }
+
+    &.collected {
+      path {
+        fill: var(--collected);
+        fill-opacity: 40%;
+        filter: drop-shadow(0px 0px 10px var(--collected));
+      }
+  
+      &:hover path {
+        fill-opacity: 100%;
+      }
+    }
+  }
+}
+
 [lang]::after { margin-left: 0.5em }
 [lang="ar-MA"]::after { content: '🇲🇦' }
 [lang="cy-GB"]::after { content: '🏴󠁧󠁢󠁷󠁬󠁳󠁿' }

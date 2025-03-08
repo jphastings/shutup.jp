@@ -22,6 +22,9 @@
         <p>It's just shy of a decade later and, apparently, I've <em>still</em> not got the message.</p>
         <cite><a target="_blank" href="https://www.byjp.me">JP</a></cite>
       </section>
+      <section class="worldmap">
+        {{ worldMap .Countries }}
+      </section>
 
       {{ range .Postcards }}
       <figure id="{{.Name}}">

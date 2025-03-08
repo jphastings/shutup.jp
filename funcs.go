@@ -10,6 +10,7 @@ import (
 	"github.com/gohugoio/hugo/tpl"
 	"github.com/jphastings/dotpostcard/formats"
 	"github.com/jphastings/dotpostcard/types"
+	"github.com/jphastings/shutup.jp/build/mapping"
 )
 
 func now() time.Time {
@@ -37,6 +38,19 @@ func annotate(at types.AnnotatedText) ht.HTML {
 	return ht.HTML(at.HTML())
 }
 
+//go:embed world.svg
+var worldMapSVG string
+
+func worldMap(cs mapping.Countries) ht.HTML {
+	collectedMap := worldMapSVG
+
+	for _, cc := range cs.Codes() {
+		collectedMap = strings.ReplaceAll(collectedMap, `id='`+cc+`'`, `id='`+cc+`' class='collected'`)
+	}
+
+	return ht.HTML(collectedMap)
+}
+
 var funcs = ht.FuncMap{
 	"htmlEscape": htmlEscape,
 	"lastPC":     lastPC,
@@ -44,6 +58,7 @@ var funcs = ht.FuncMap{
 	"plainify":   plainify,
 	"altText":    altText,
 	"annotate":   annotate,
+	"worldMap":   worldMap,
 }
 
 //go:embed index.html.tmpl
