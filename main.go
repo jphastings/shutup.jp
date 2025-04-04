@@ -11,6 +11,7 @@ import (
 
 	"github.com/jphastings/dotpostcard/formats"
 	"github.com/jphastings/dotpostcard/formats/component"
+	"github.com/jphastings/dotpostcard/formats/usdz"
 	"github.com/jphastings/dotpostcard/formats/web"
 	"github.com/jphastings/dotpostcard/types"
 	"github.com/jphastings/shutup.jp/build/mapping"
@@ -47,7 +48,7 @@ func main() {
 	}
 	check(os.MkdirAll(outDir, 0755))
 
-	fmt.Println("Finding postcards & extracting front/back images")
+	fmt.Println("Finding postcards & extracting front/back images & 3D models")
 	for _, file := range files {
 		f, err := os.Open(file)
 		check(err)
@@ -63,8 +64,14 @@ func main() {
 		vars.Countries.Add(pc.Meta.Location)
 
 		// Make front & back covers
-		fws, err := component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800})
+		compFWs, err := component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800})
 		check(err)
+
+		// Make 3D models
+		usdFWs, err := usdz.Codec().Encode(pc, &formats.EncodeOptions{})
+		check(err)
+
+		fws := append(compFWs, usdFWs...)
 
 		for _, fw := range fws {
 			fname, err := fw.WriteFile(outDir, false)
