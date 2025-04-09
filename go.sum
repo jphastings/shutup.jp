@@ -173,6 +173,8 @@ github.com/josharian/intern v1.0.0 h1:vlS4z54oSdjm0bgjRigI+G1HpF+tI+9rE5LLzOg8Hm
 github.com/josharian/intern v1.0.0/go.mod h1:5DoeVV0s6jJacbCEi61lwdGj/aVlrQvzHFFd8Hwg//Y=
 github.com/jphastings/dotpostcard v0.14.8 h1:0nG5cEaOONCwqb9CabfZU6YcySj2EiZNZhblIkFwdgs=
 github.com/jphastings/dotpostcard v0.14.8/go.mod h1:r4vTV+gdm2ZSmtAJv8D6x3KdC3GXdcJ/xM28Tv93IaE=
+github.com/jphastings/dotpostcard v0.14.9 h1:dY12OzUnzG0OUKvWNmaPIWWdEU0VfMbhQ/yFBrld4d4=
+github.com/jphastings/dotpostcard v0.14.9/go.mod h1:r4vTV+gdm2ZSmtAJv8D6x3KdC3GXdcJ/xM28Tv93IaE=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pretty v0.2.1/go.mod h1:ipq/a2n7PKx3OHsz4KJII5eveXtPO4qwEXGdVfWzfnI=
 github.com/kr/pretty v0.3.1 h1:flRD4NNwYAUpkphVc1HcthR4KEIFJ65n8Mw5qdRn3LE=
