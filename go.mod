@@ -7,7 +7,7 @@ toolchain go1.23.4
 require (
 	github.com/biter777/countries v1.7.5
 	github.com/gohugoio/hugo v0.145.0
-	github.com/jphastings/dotpostcard v0.14.6
+	github.com/jphastings/dotpostcard v0.14.8
 )
 
 require (
@@ -21,8 +21,6 @@ require (
 	github.com/campoy/embedmd v1.0.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/clbanning/mxj/v2 v2.7.0 // indirect
-	github.com/cli/safeexec v1.0.1 // indirect
-	github.com/dotpostcard/postcards-go v0.1.0 // indirect
 	github.com/dsoprea/go-exif/v2 v2.0.0-20230826092837-6579e82b732d // indirect
 	github.com/dsoprea/go-exif/v3 v3.0.1 // indirect
 	github.com/dsoprea/go-iptc v0.0.0-20200610044640-bc9ca208b413 // indirect
