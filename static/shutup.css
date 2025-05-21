@@ -250,3 +250,4 @@ input:checked ~ figcaption .title {
 [lang="vi-VN"]::after { content: '🇻🇳' }
 [lang="zh-CN"]::after { content: '🇨🇳' }
 [lang="zh-SG"]::after { content: '🇸🇬/🇨🇳' }
+[lang="zh-TW"]::after { content: '🇹🇼' }
