@@ -41,12 +41,20 @@ func annotate(at types.AnnotatedText) ht.HTML {
 //go:embed world.svg
 var worldMapSVG string
 
-func worldMap(cs mapping.Countries) ht.HTML {
+func worldMap(cs mapping.Countries, pcs []types.Postcard) ht.HTML {
 	collectedMap := worldMapSVG
 
 	for _, cc := range cs.Codes() {
 		collectedMap = strings.ReplaceAll(collectedMap, `id='`+cc+`'`, `id='`+cc+`' class='collected'`)
 	}
+
+	var allPoints string
+	for _, pc := range pcs {
+		x, y := ProjectRobinson(*pc.Meta.Location.Latitude, *pc.Meta.Location.Longitude)
+		allPoints += svgPointer(x, y, pc.Meta.Location.CountryCode)
+	}
+
+	collectedMap = strings.Replace(collectedMap, "id='points'>", "id='points'>"+allPoints, 1)
 
 	return ht.HTML(collectedMap)
 }

@@ -1,26 +1,29 @@
 module github.com/jphastings/shutup.jp/build
 
-go 1.23.0
+go 1.24
 
-toolchain go1.23.4
+toolchain go1.24.3
 
 require (
 	github.com/biter777/countries v1.7.5
 	github.com/gohugoio/hugo v0.145.0
 	github.com/jphastings/dotpostcard v0.14.9
+	github.com/stretchr/testify v1.9.0
+	github.com/twpayne/go-proj/v11 v11.0.0
 )
 
 require (
 	git.sr.ht/~jackmordaunt/go-libwebp v1.8.0 // indirect
+	git.sr.ht/~sbinet/cmpimg v0.1.0 // indirect
 	git.sr.ht/~sbinet/gg v0.6.0 // indirect
 	github.com/bep/clocks v0.5.0 // indirect
 	github.com/bep/godartsass/v2 v2.5.0 // indirect
 	github.com/bep/golibsass v1.2.0 // indirect
 	github.com/bep/logg v0.4.0 // indirect
 	github.com/calvinfeng/rdp-path-simplification v0.0.0-20180903222510-ae464721f91c // indirect
-	github.com/campoy/embedmd v1.0.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/clbanning/mxj/v2 v2.7.0 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dsoprea/go-exif/v2 v2.0.0-20230826092837-6579e82b732d // indirect
 	github.com/dsoprea/go-exif/v3 v3.0.1 // indirect
 	github.com/dsoprea/go-iptc v0.0.0-20200610044640-bc9ca208b413 // indirect
@@ -75,4 +78,5 @@ require (
 	modernc.org/libc v1.62.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.9.1 // indirect
+	rsc.io/pdf v0.1.1 // indirect
 )

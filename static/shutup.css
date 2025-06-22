@@ -215,6 +215,10 @@ input:checked ~ figcaption .title {
       }
     }
   }
+
+  circle {
+    fill: #777;
+  }
 }
 
 [lang]::after { margin-left: 0.5em }

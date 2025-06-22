@@ -34,6 +34,7 @@ type tmplVars struct {
 func main() {
 	files, err := filepath.Glob("postcards/*.postcard.webp")
 	check(err)
+	doHeavyLifting := true
 
 	vars := tmplVars{
 		Sizes:     make(map[string]int64),
@@ -48,42 +49,44 @@ func main() {
 	}
 	check(os.MkdirAll(outDir, 0755))
 
-	fmt.Println("Finding postcards & extracting front/back images & 3D models")
-	for _, file := range files {
-		f, err := os.Open(file)
-		check(err)
-		defer f.Close()
-
-		b := web.BundleFromReader(f, file)
-		pc, err := b.Decode(formats.DecodeOptions{})
-		check(err)
-
-		pcImgName := "postcards/" + pc.Name + ".postcard.webp"
-		vars.Postcards = append(vars.Postcards, pc)
-		toCopy = append(toCopy, pcImgName)
-		vars.Countries.Add(pc.Meta.Location)
-
-		// Make front & back covers
-		compFWs, err := component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800})
-		check(err)
-
-		// Make 3D models
-		usdFWs, err := usdz.Codec().Encode(pc, &formats.EncodeOptions{})
-		check(err)
-
-		fws := append(compFWs, usdFWs...)
-
-		for _, fw := range fws {
-			fname, err := fw.WriteFile(outDir, false)
-			if !errors.Is(err, os.ErrExist) {
-				check(err)
-			}
-			fs, err := os.Stat(path.Join(outDir, fname))
+	if doHeavyLifting {
+		fmt.Println("Finding postcards & extracting front/back images & 3D models")
+		for _, file := range files {
+			f, err := os.Open(file)
 			check(err)
-			vars.Sizes[fname] = fs.Size()
+			defer f.Close()
+
+			b := web.BundleFromReader(f, file)
+			pc, err := b.Decode(formats.DecodeOptions{})
+			check(err)
+
+			pcImgName := "postcards/" + pc.Name + ".postcard.webp"
+			vars.Postcards = append(vars.Postcards, pc)
+			toCopy = append(toCopy, pcImgName)
+			vars.Countries.Add(pc.Meta.Location)
+
+			// Make front & back covers
+			compFWs, err := component.Codec().Encode(pc, &formats.EncodeOptions{MaxDimension: 800})
+			check(err)
+
+			// Make 3D models
+			usdFWs, err := usdz.Codec().Encode(pc, &formats.EncodeOptions{})
+			check(err)
+
+			fws := append(compFWs, usdFWs...)
+
+			for _, fw := range fws {
+				fname, err := fw.WriteFile(outDir, false)
+				if !errors.Is(err, os.ErrExist) {
+					check(err)
+				}
+				fs, err := os.Stat(path.Join(outDir, fname))
+				check(err)
+				vars.Sizes[fname] = fs.Size()
+			}
 		}
+		sort.Sort(types.BySentOn(vars.Postcards))
 	}
-	sort.Sort(types.BySentOn(vars.Postcards))
 
 	fmt.Println("Creating index.html")
 	indexF, err := os.OpenFile(path.Join(outDir, "index.html"), os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0644)
