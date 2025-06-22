@@ -22,11 +22,14 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22.6'
+          go-version: "1.22.6"
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
+
+      - name: Install dependencies
+        run: sudo apt install -y proj-bin
 
       - name: Build site
         run: go run .
