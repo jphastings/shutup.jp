@@ -29,7 +29,7 @@ jobs:
         uses: actions/configure-pages@v2
 
       - name: Install dependencies
-        run: sudo apt install -y proj-bin
+        run: sudo apt install -y libproj-dev
 
       - name: Build site
         run: go run .
