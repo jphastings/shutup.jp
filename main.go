@@ -41,6 +41,7 @@ func main() {
 		Countries: make(mapping.Countries),
 	}
 	toCopy := []string{
+		"static/ar.svg",
 		"static/postcard.css",
 		"static/shutup.css",
 		"static/bg-light.png",

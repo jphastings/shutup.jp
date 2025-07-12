@@ -37,7 +37,10 @@
         </label>
         
         <figcaption>
-          <div class="title">{{ with .Meta.Location }}<span>{{ .Name }}</span>{{ end }}{{ with .Meta.SentOn }} <time datetime="{{ . }}">{{ .Format "January 2, 2006" }}</time>{{ end }}</div>
+          <div class="title">
+            {{- with .Meta.Location }}<span>{{ .Name }}</span>{{ end -}}
+            {{- with .Meta.SentOn }} <time datetime="{{ . }}">{{ .Format "January 2, 2006" }}</time>{{ end -}}
+          </div>
           <div class="transcription">{{- .Meta.Back.Transcription | annotate -}}</div>
         </figcaption>
       </figure>
