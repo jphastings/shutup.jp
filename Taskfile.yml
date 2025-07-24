@@ -21,4 +21,4 @@ tasks:
   postcards:
     desc: Pulls postcards from `ORIGINAL_POSTCARDS` (as specified in `.env`)
     cmds:
-      - /Users/jp/src/personal/dotpostcard/dist/postcards_darwin_arm64_v8.0/postcards -f web --remove-border --out-dir ./postcards "${ORIGINAL_POSTCARDS}"/*
+      - postcards -f web --remove-border --out-dir ./postcards "${ORIGINAL_POSTCARDS}"/*
