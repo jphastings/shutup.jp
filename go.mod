@@ -5,7 +5,7 @@ go 1.24.3
 require (
 	github.com/biter777/countries v1.7.5
 	github.com/gohugoio/hugo v0.152.2
-	github.com/jphastings/dotpostcard v0.15.5
+	github.com/jphastings/dotpostcard v0.15.7
 	github.com/twpayne/go-proj/v11 v11.0.0
 )
 

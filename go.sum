@@ -275,6 +275,8 @@ github.com/jphastings/dotpostcard v0.14.15 h1:4tBeGcdGb8FMmhvqj+XHdmpqbsg0IzcxMC
 github.com/jphastings/dotpostcard v0.14.15/go.mod h1:0eiXZ86Z8pjV90l5f3vZ+2M6ViWuSriA33VmFmTYa3Q=
 github.com/jphastings/dotpostcard v0.15.5 h1:HaNDOI/OEyP2d/qdgE/x/+9HKhDrGDY+hEwp+03KkB4=
 github.com/jphastings/dotpostcard v0.15.5/go.mod h1:Y2KDj9IwkH1cfrP+jlL7IvEP/HqLZkCVn00gKi5/zzY=
+github.com/jphastings/dotpostcard v0.15.7 h1:cRZqBMbTDdEvJSDRza9jP91vO2vPJtTNyoLq0SzZzUQ=
+github.com/jphastings/dotpostcard v0.15.7/go.mod h1:maZT8F9RSEygNDMqaUBHgHFnMHaZ0oNvBwUHUtvJBuA=
 github.com/klauspost/compress v1.17.9/go.mod h1:Di0epgTjJY877eYKx5yC51cX2A2Vl2ibi7bDH9ttBbw=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pretty v0.2.1/go.mod h1:ipq/a2n7PKx3OHsz4KJII5eveXtPO4qwEXGdVfWzfnI=
