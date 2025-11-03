@@ -17,7 +17,6 @@ require (
 	github.com/bep/golibsass v1.2.0 // indirect
 	github.com/bep/helpers v0.6.0 // indirect
 	github.com/calvinfeng/rdp-path-simplification v0.0.0-20180903222510-ae464721f91c // indirect
-	github.com/campoy/embedmd v1.0.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/dsoprea/go-exif/v2 v2.0.0-20230826092837-6579e82b732d // indirect
 	github.com/dsoprea/go-exif/v3 v3.0.1 // indirect
@@ -48,13 +47,10 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/mapstructure v1.5.1-0.20231216201459-8508981c8b6c // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
-	github.com/niklasfasching/go-org v1.9.1 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
-	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/spf13/afero v1.15.0 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
-	github.com/sunshineplan/tiff v0.0.0-20220128141034-29b9d69bd906 // indirect
 	github.com/tdewolff/parse/v2 v2.8.5 // indirect
 	github.com/tetratelabs/wazero v1.9.0 // indirect
 	github.com/trimmer-io/go-xmp v1.0.0 // indirect
