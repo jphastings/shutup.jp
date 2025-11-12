@@ -13,7 +13,7 @@ permissions:
 jobs:
   build:
     name: Build and Deploy
-    runs-on: ubuntu-25.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -31,7 +31,21 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y libproj-dev libwebp-dev
+          sudo apt install -y libproj-dev build-essential cmake git
+
+          # download libWebP v1.6.0
+          wget https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.6.0.tar.gz
+          tar -xzf libwebp-1.6.0.tar.gz
+          cd libwebp-1.6.0
+
+          # Build and install
+          mkdir build && cd build
+          cmake ../
+          make
+          sudo make install
+
+          # Update library cache
+          sudo ldconfig
 
       - name: Build site
         run: go run .
