@@ -1,6 +1,6 @@
 module github.com/jphastings/shutup.jp/build
 
-go 1.24.3
+go 1.25.3
 
 require (
 	github.com/biter777/countries v1.7.5
