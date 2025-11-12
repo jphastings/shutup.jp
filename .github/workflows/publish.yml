@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y libproj-dev webp
+          sudo apt install -y libproj-dev libwebp-dev
 
       - name: Build site
         run: go run .
