@@ -16,11 +16,10 @@ dependencies:
     - curl
     # My dependencies
     - go
-    - proj
+    - proj.dev
     - libwebp
     # CGo
-    - gcc
-    - gnumake
+    - stdenv.cc
     - pkg-config
 
 environment:
@@ -28,6 +27,14 @@ environment:
   WISP_HANDLE: byjp.me
 
 steps:
+  - name: Setup CGO environment
+    command: |
+      export PKG_CONFIG_PATH="$(pkg-config --variable pc_path pkg-config)"
+      for pkg in proj libwebp; do
+        export PKG_CONFIG_PATH="$(find /nix/store -name "$pkg.pc" -exec dirname {} \; | head -1):$PKG_CONFIG_PATH"
+      done
+      export CGO_ENABLED=1
+
   - name: Build site
     command: go run .
 
