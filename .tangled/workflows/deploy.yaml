@@ -13,6 +13,7 @@ dependencies:
   nixpkgs:
     # Needed to retrieve wisp
     - coreutils
+    - findutils
     - curl
     # My dependencies
     - go
