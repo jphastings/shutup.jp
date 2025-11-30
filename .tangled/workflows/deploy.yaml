@@ -11,11 +11,17 @@ clone:
 
 dependencies:
   nixpkgs:
+    # Needed to retrieve wisp
     - coreutils
     - curl
+    # My dependencies
     - go
     - proj
     - libwebp
+    # CGo
+    - gcc
+    - gnumake
+    - pkg-config
 
 environment:
   SITE_NAME: shutup.jp
