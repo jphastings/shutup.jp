@@ -5,13 +5,12 @@ go 1.25.3
 require (
 	github.com/biter777/countries v1.7.5
 	github.com/gohugoio/hugo v0.152.2
-	github.com/jphastings/dotpostcard v0.15.9
+	github.com/jphastings/dotpostcard v0.15.10
 	github.com/twpayne/go-proj/v11 v11.0.0
 )
 
 require (
-	git.sr.ht/~jackmordaunt/go-libwebp v1.8.0 // indirect
-	git.sr.ht/~jackmordaunt/go-libwebp/v2 v2.3.1 // indirect
+	git.sr.ht/~jackmordaunt/go-libwebp/v2 v2.3.2 // indirect
 	git.sr.ht/~sbinet/gg v0.7.0 // indirect
 	github.com/alecthomas/assert/v2 v2.11.0 // indirect
 	github.com/alecthomas/repr v0.5.1 // indirect
@@ -61,7 +60,7 @@ require (
 	github.com/trimmer-io/go-xmp v1.0.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/quicktemplate v1.8.0 // indirect
-	golang.org/x/exp v0.0.0-20251113190631-e25ba8c21ef6 // indirect
+	golang.org/x/exp v0.0.0-20251125195548-87e1e737ad39 // indirect
 	golang.org/x/image v0.33.0 // indirect
 	golang.org/x/net v0.47.0 // indirect
 	golang.org/x/sys v0.38.0 // indirect
