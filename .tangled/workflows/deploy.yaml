@@ -1,0 +1,39 @@
+when:
+  - event: ['push']
+    branch: ['main']
+  - event: ['manual']
+
+engine: 'nixery'
+
+clone:
+  skip: false
+  depth: 1
+
+dependencies:
+  nixpkgs:
+    - coreutils
+    - curl
+    - go
+    - proj
+    - libwebp
+
+environment:
+  SITE_NAME: shutup.jp
+  WISP_HANDLE: byjp.me
+
+steps:
+  - name: Build site
+    command: go run .
+
+  - name: Download wisp
+    command: |
+      curl https://sites.wisp.place/nekomimi.pet/wisp-cli-binaries/wisp-cli-x86_64-linux -o wisp-cli
+      chmod +x wisp-cli
+
+  - name: Upload site
+    command: |
+      ./wisp-cli \
+        "$WISP_HANDLE" \
+        --path "./dist" \
+        --site "$SITE_NAME" \
+        --password "$WISP_APP_PASSWORD"
